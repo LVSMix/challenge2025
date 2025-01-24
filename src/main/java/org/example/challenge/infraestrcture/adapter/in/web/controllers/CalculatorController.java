@@ -1,4 +1,4 @@
-package org.example.challenge.infrestrcture.adapter.in.web.controllers;
+package org.example.challenge.infraestrcture.adapter.in.web.controllers;
 
 
 import io.swagger.v3.oas.annotations.Operation;

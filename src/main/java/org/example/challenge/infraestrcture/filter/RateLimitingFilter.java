@@ -1,4 +1,4 @@
-package org.example.challenge.filter;
+package org.example.challenge.infraestrcture.filter;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;

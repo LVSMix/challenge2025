@@ -1,6 +1,6 @@
-package org.example.challenge.config;
+package org.example.challenge.infraestrcture.config;
 
-import org.example.challenge.filter.RateLimitingFilter;
+import org.example.challenge.infraestrcture.filter.RateLimitingFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

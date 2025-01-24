@@ -1,6 +1,6 @@
 package org.example.challenge.application.service;
 
-import org.example.challenge.infrestrcture.adapter.out.client.PercentageClient;
+import org.example.challenge.infraestrcture.adapter.out.client.PercentageClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

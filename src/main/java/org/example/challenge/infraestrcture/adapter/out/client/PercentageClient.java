@@ -1,6 +1,6 @@
-package org.example.challenge.infrestrcture.adapter.out.client;
+package org.example.challenge.infraestrcture.adapter.out.client;
 
-import org.example.challenge.infrestrcture.adapter.out.cache.PercentageCache;
+import org.example.challenge.infraestrcture.adapter.out.cache.PercentageCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

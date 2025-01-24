@@ -1,4 +1,4 @@
-package org.example.challenge.infrestrcture.adapter.in.web.controllers;
+package org.example.challenge.infraestrcture.adapter.in.web.controllers;
 
 import org.example.challenge.domain.model.ApiCallLog;
 import org.example.challenge.domain.repository.ApiCallLogRepository;
