@@ -1,23 +1,34 @@
 package org.example.challenge.domain.model;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 
+@Entity
 public class ApiCallLog {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "timestamp")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime timestamp;
+    @Column(name = "endpoint")
     private String endpoint;
+    @Column(name = "parameters")
     private String parameters;
+    @Column(name = "response")
     private String response;
+    @Column(name = "error")
     private String error;
 
-    public ApiCallLog(LocalDateTime timestamp, String endpoint, String parameters, String response, String error) {
-        this.timestamp = timestamp;
-        this.endpoint = endpoint;
-        this.parameters = parameters;
-        this.response = response;
-        this.error = error;
+    public Long getId() {
+        return id;
     }
 
-    // Getters y setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public LocalDateTime getTimestamp() {
         return timestamp;
     }

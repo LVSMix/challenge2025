@@ -1,11 +1,18 @@
 package org.example.challenge.infrestrcture.adapter.in.web.controllers;
 
 
-import org.example.challenge.domain.exception.BadRequestException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.example.challenge.application.service.ApiCallLogService;
 import org.example.challenge.application.service.CalculationService;
+import org.example.challenge.domain.exception.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
@@ -18,6 +25,18 @@ public class CalculatorController {
     @Autowired
     private ApiCallLogService logService;
 
+
+    @Operation(summary = "Calculate the result of a mathematical operation",
+            description = "This endpoint calculates the result of a mathematical operation based on the provided parameters.",
+            parameters = {
+                    @Parameter(name = "num1", description = "The first number", required = true),
+                    @Parameter(name = "num2", description = "The second number", required = true)
+            })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful operation"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/calculate")
     public double calculate(
             @RequestParam double num1,

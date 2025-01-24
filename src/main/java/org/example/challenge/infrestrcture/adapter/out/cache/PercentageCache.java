@@ -1,36 +1,28 @@
 package org.example.challenge.infrestrcture.adapter.out.cache;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class PercentageCache {
 
-    private static class CacheEntry {
-        double percentage;
-        Instant expiryTime;
+    private static final String CACHE_KEY = "percentage";
+    private static final long CACHE_EXPIRY = 30; // 30 minutes
 
-        CacheEntry(double percentage, Instant expiryTime) {
-            this.percentage = percentage;
-            this.expiryTime = expiryTime;
-        }
-    }
-
-    private final AtomicReference<CacheEntry> cache = new AtomicReference<>();
+    @Autowired
+    private RedisTemplate<String, Double> redisTemplate;
 
     public void storePercentage(double percentage) {
-        cache.set(new CacheEntry(percentage, Instant.now().plusSeconds(30 * 60))); // 30 minutos
+        redisTemplate.opsForValue().set(CACHE_KEY, percentage, CACHE_EXPIRY, TimeUnit.MINUTES);
     }
 
     public Optional<Double> getPercentage() {
-        CacheEntry entry = cache.get();
-        if (entry != null && Instant.now().isBefore(entry.expiryTime)) {
-            return Optional.of(entry.percentage);
-        }
-        return Optional.empty();
+        Double percentage = redisTemplate.opsForValue().get(CACHE_KEY);
+        return Optional.ofNullable(percentage);
     }
 
     public boolean hasValidPercentage() {
