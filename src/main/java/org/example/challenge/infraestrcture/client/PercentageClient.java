@@ -18,7 +18,6 @@ public class PercentageClient {
     @Autowired
     private PercentageCache percentageCache;
     private static final Logger logger = LoggerFactory.getLogger(PercentageClient.class);
-    private static final int MAX_RETRIES = 3;
     private final RestTemplate restTemplate = new RestTemplate();
     @Value("${external.service.url}")
     private String externalServiceUrl;

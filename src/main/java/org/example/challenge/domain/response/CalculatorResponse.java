@@ -13,5 +13,5 @@ import lombok.Data;
 public class CalculatorResponse {
 
     @Schema(description = "Result of Calculate", example = "10.0")
-    private double result = 0;
+    private double result;
 }
