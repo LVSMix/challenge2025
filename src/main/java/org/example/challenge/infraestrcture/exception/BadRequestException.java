@@ -1,4 +1,4 @@
-package org.example.challenge.domain.exception;
+package org.example.challenge.infraestrcture.exception;
 
 public class BadRequestException extends RuntimeException{
     public BadRequestException(String message) {

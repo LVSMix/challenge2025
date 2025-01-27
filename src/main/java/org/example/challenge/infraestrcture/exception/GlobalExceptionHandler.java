@@ -1,4 +1,4 @@
-package org.example.challenge.domain.exception;
+package org.example.challenge.infraestrcture.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

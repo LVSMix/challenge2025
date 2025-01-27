@@ -1,4 +1,4 @@
-package org.example.challenge.domain.exception;
+package org.example.challenge.infraestrcture.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
     public ResourceNotFoundException(String message) {

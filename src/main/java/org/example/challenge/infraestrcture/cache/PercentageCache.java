@@ -1,4 +1,4 @@
-package org.example.challenge.infraestrcture.adapter.out.cache;
+package org.example.challenge.infraestrcture.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
