@@ -4,21 +4,23 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import org.example.challenge.infraestrcture.cache.PercentageCache;
+import org.example.challenge.infraestrcture.config.RetryConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.retry.support.RetryTemplate;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Optional;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.*;
 
 public class PercentageClientTooManyRequestsTest {
@@ -41,6 +43,11 @@ public class PercentageClientTooManyRequestsTest {
         // Set the externalServiceUrl to the WireMock server URL
         String externalServiceUrl = "http://localhost:" + wireMockServer.port();
         ReflectionTestUtils.setField(percentageClient, "externalServiceUrl", externalServiceUrl);
+
+        // Create and inject RetryTemplate
+        RetryConfig retryConfig = new RetryConfig();
+        RetryTemplate retryTemplate = retryConfig.retryTemplate();
+        ReflectionTestUtils.setField(percentageClient, "retryTemplate", retryTemplate);
 
 
         // Configure WireMock to return a 200 status code on the first call and a 429 status code on the second call

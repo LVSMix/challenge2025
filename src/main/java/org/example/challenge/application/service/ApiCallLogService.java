@@ -1,9 +1,8 @@
 package org.example.challenge.application.service;
 
 
-
-import org.example.challenge.domain.model.ApiCallLog;
 import org.example.challenge.application.repository.ApiCallLogRepository;
+import org.example.challenge.domain.model.ApiCallLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
