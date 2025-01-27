@@ -48,7 +48,7 @@ This project is built with Spring Boot. It provides API with diferent technologi
 
 Ensure you have the following installed on your system:
 
-- Java Development Kit (JDK 17)
+- Java Development Kit (JDK 21)
 - Maven
 
 
