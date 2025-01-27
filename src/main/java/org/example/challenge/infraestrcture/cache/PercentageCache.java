@@ -24,8 +24,4 @@ public class PercentageCache {
         Double percentage = redisTemplate.opsForValue().get(CACHE_KEY);
         return Optional.ofNullable(percentage);
     }
-
-    public boolean hasValidPercentage() {
-        return getPercentage().isPresent();
-    }
 }
